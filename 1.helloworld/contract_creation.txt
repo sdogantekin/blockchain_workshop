@@ -1,0 +1,19 @@
+var contractFactory = eth.contract([{"constant":true,"inputs":[],"name":"say","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"pure","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}])
+
+var contractCompiled = "0x" + "6060604052341561000f57600080fd5b61014e8061001e6000396000f3006060604052600436106100405763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663954ab4b28114610045575b600080fd5b341561005057600080fd5b6100586100cf565b60405160208082528190810183818151815260200191508051906020019080838360005b8381101561009457808201518382015260200161007c565b50505050905090810190601f1680156100c15780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6100d7610110565b60408051908101604052600b81527f48656c6c6f20576f726c640000000000000000000000000000000000000000006020820152905090565b602060405190810160405260008152905600a165627a7a723058205b834a022b8aad23e85cfec80d82e95fd7de7bce1c090390ee3b1eb5bc1077a30029"
+
+var contract = contractFactory.new({from:eth.accounts[0],data: contractCompiled,gas:896000}, function(e, contract){
+    if(!e) {
+      if(!contract.address) {
+        console.log("Contract transaction send: TransactionHash: " + contract.transactionHash + " waiting to be mined...");
+      } else {
+        console.log("Contract mined! Address: " + contract.address);
+      }
+    } else {
+        console.log("Error in contract creation: "+e);
+    }
+})
+
+
+
+var node2say = eth.contract([{"constant":true,"inputs":[],"name":"say","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"pure","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]).at("0x335ad5ebd4565b3e5c367e2a9cca1af24e824486")

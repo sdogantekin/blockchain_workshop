@@ -1,0 +1,26 @@
+geth --datadir="." --identity nodeX --networkid 15 --rpc --rpcport 8030 --rpccorsdomain "*" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30302 --nodiscover --ipcdisable console
+
+
+
+
+
+geth --datadir="." --identity node1 --networkid 15 --rpc --rpcport 8030 --rpccorsdomain "*" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30302 --nodiscover --ipcdisable console
+
+
+geth --datadir="." --identity node2 --networkid 15 --rpc --rpcport 8031 --rpccorsdomain "*" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30303 --nodiscover --ipcdisable console
+
+
+geth --datadir="." --identity nodeminer --networkid 15 --rpc --rpcport 8032 --rpccorsdomain "*" --rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" --port 30304 --nodiscover --ipcdisable console
+
+
+geth 
+--datadir="." 
+--identity nodeX 
+--networkid 15 
+--rpc 
+--rpcport 8030 
+--rpccorsdomain "*" 
+--rpcapi "admin,db,eth,debug,miner,net,shh,txpool,personal,web3" 
+--port 30302 
+--nodiscover 
+console

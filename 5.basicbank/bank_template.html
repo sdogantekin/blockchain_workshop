@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script src="./web3.min.js"></script>  
+        <script src="./jquery-3.3.1.min.js"></script>  
+    </head>
+    <body>
+        <script>
+            var web3 = new Web3(new Web3.providers.HttpProvider("http://IP:RPC_PORT"));
+            web3.eth.defaultAccount = web3.eth.accounts[0];      
+            var bankContract = web3.eth.contract(ABI);  
+            var bank = bankContract.at(CONTRACT_ADDRESS);
+            var depositEvent = bank.LogDepositMade();
+            depositEvent.watch(function(error, result){
+            if (!error) {
+                $("#logs").append($("<li>").text(result.args.accountAddress + ' deposited ' + result.args.amount));                
+            } else {
+                console.log(error);
+            }
+        });
+        </script>   
+        <h3>Bank Deposit Logs</h3>
+        <br/>
+        <div>
+            <ul id="logs">                
+            </ul>
+        </div>
+    </body>
+</html>
